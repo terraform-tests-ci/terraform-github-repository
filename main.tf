@@ -439,9 +439,9 @@ resource "github_repository_webhook" "repository_webhook" {
   events     = local.webhooks[count.index].events
 
   configuration {
-    url          = local.webhooks[count.index].configuration.url
-    content_type = local.webhooks[count.index].configuration.content_type
-    insecure_ssl = local.webhooks[count.index].configuration.insecure_ssl
-    secret       = local.webhooks[count.index].configuration.secret
+    url          = try(local.webhooks[count.index].configuration.url, null)
+    content_type = try(local.webhooks[count.index].configuration.content_type, null)
+    insecure_ssl = try(local.webhooks[count.index].configuration.insecure_ssl, null)
+    secret       = try(local.webhooks[count.index].configuration.secret, null)
   }
 }

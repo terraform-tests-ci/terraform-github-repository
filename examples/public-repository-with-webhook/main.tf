@@ -31,5 +31,14 @@ module "repository" {
       insecure_ssl = var.webhook_insecure_ssl
       secret       = var.webhook_secret
     }
+    }, {
+    active = false
+    events = ["issue_comment"]
+    configuration = {
+      url          = var.webhook_url
+      content_type = var.webhook_content_type
+      insecure_ssl = var.webhook_insecure_ssl
+      secret       = var.webhook_secret
+    }
   }]
 }
